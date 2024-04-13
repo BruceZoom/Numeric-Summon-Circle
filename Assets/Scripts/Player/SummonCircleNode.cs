@@ -7,7 +7,6 @@ using NSC.Creature;
 using NSC.Inventory;
 using NSC.Number;
 using NSC.Utils;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -312,11 +311,10 @@ namespace NSC.Player
             var number = _product;
             _product = null;
 
-            _productObject.StartMoveAnimation(transform.position, _circle.transform.position, _summonTime)
-                .OnComplete(delegate
-                {
-                    _circle.Summon(number);
-                });
+            _productObject.StartMoveAnimation(transform.position, _circle.transform.position, _summonTime).onComplete += delegate
+            {
+                _circle.Summon(number);
+            };
         }
 
         private NumberElement ConsumeProduct()

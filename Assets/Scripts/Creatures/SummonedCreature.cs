@@ -40,13 +40,38 @@ namespace NSC.Creature
                             minDist = newDist;
                         }
                     }
+
+                    //_trackTarget.GetComponent<EnemyCreature>().DeathCallback.AddListener(UntrackEnemy);
                 }
             }
 
-            if (transform != _trackTarget)
+            if (_trackTarget != transform && _trackTarget != null)
             {
-                transform.transform.position += (_trackTarget.position - transform.position).normalized * _moveSpeed * Time.deltaTime;
+                transform.position += (_trackTarget.position - transform.position).normalized * _moveSpeed * Time.deltaTime;
             }
         }
+
+        private void UntrackEnemy()
+        {
+            _trackTarget = null;
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.TryGetComponent(out EnemyCreature enemy))
+            {
+                MeleeAttack(enemy);
+            }
+        }
+
+#if UNITY_EDITOR
+        private void OnDrawGizmosSelected()
+        {
+            if (_trackTarget != null)
+            {
+                Gizmos.DrawIcon(_trackTarget.position, "Track Target");
+            }
+        }
+#endif
     }
 }

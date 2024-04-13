@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace NSC.Creature
 {
@@ -9,6 +10,8 @@ namespace NSC.Creature
         [SerializeField] private float _moveSpeed;
 
         private Vector3 _direction;
+
+        //public UnityEvent DeathCallback;
 
         private void Start()
         {
@@ -36,6 +39,8 @@ namespace NSC.Creature
             base.Die();
 
             EnemyManager.Instance.UntrackEnemy(this);
+            //DeathCallback?.Invoke();
+            //DeathCallback.RemoveAllListeners();
         }
     }
 }

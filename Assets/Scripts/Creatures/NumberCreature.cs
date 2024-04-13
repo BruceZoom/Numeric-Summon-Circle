@@ -26,7 +26,7 @@ namespace NSC.Creature
         public void MeleeAttack(NumberCreature other)
         {
             // netrualized
-            if (Number == other.Number)
+            if (Number.Equals(other.Number))
             {
                 // destroy myself
                 this.Die();
