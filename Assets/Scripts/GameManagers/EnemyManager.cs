@@ -57,7 +57,7 @@ namespace NSC.Creature
 
             var enemy = GameObject.Instantiate(_enemyPrefab, Camera.main.ViewportToWorldPoint(viewPos).SetZ(0), Quaternion.identity);
             // TODO: test only
-            enemy.SetNumber(new NumberElement(1, 1));
+            enemy.SetNumber(new NumberElement(2, 1));
             EnemyCreatures.Add(enemy);
         }
 

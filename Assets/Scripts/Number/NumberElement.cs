@@ -8,7 +8,7 @@ namespace NSC.Number
     [Serializable]
     public class NumberElement: IComparable<NumberElement>
     {
-        public NumberElement(int numerator, int denominator)
+        public NumberElement(int numerator, int denominator = 1)
         {
             Numerator = numerator;
             Denominator = denominator;

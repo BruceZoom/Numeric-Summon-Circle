@@ -7,6 +7,7 @@ namespace NSC.Creature
 {
     public class SummonedCreature : NumberCreature
     {
+        [Header("Summoned Creature")]
         [SerializeField] private float _updateInterval;
 
         private Transform _trackTarget;
@@ -14,6 +15,13 @@ namespace NSC.Creature
         [SerializeField] private float _moveSpeed;
 
         private float _nextTargetUpdateTime;
+
+        private Rigidbody2D _rb;
+
+        private void Awake()
+        {
+            _rb = GetComponent<Rigidbody2D>();
+        }
 
         private void Update()
         {
@@ -47,7 +55,12 @@ namespace NSC.Creature
 
             if (_trackTarget != transform && _trackTarget != null)
             {
-                transform.position += (_trackTarget.position - transform.position).normalized * _moveSpeed * Time.deltaTime;
+                _rb.velocity = (_trackTarget.position - transform.position).normalized * _moveSpeed;
+                //transform.position += (_trackTarget.position - transform.position).normalized * _moveSpeed * Time.deltaTime;
+            }
+            else
+            {
+                _rb.velocity = Vector2.zero;
             }
         }
 

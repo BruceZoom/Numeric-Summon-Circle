@@ -56,7 +56,7 @@ namespace NSC.Inventory
                 var ui = GameObject.Instantiate(_elementUIPrefab, _inventoryUIParent);
                 _inventory.Add(number, new InventoryStack(1, number, ui));
             }
-            else
+            else if (_inventory[number].Count >= 0)
             {
                 _inventory[number].Count += 1;
             }

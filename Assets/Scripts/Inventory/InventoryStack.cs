@@ -39,6 +39,7 @@ namespace NSC.Inventory
             _count = count;
             Number = number;
             NumberUI = numberUI;
+            NumberUI.SetNumber(number);
             NumberUI.SetCount(_count);
         }
     }

@@ -7,6 +7,7 @@ namespace NSC.Creature
 {
     public class EnemyCreature : NumberCreature
     {
+        [Header("Enemy Creature")]
         [SerializeField] private float _moveSpeed;
 
         private Vector3 _direction;
@@ -34,9 +35,9 @@ namespace NSC.Creature
             }
         }
 
-        public override void Die()
+        public override void Die(bool definiteDrop = false)
         {
-            base.Die();
+            base.Die(definiteDrop);
 
             EnemyManager.Instance.UntrackEnemy(this);
             //DeathCallback?.Invoke();

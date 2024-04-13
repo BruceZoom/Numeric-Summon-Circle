@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using NSC.Inventory;
 using NSC.Number;
+using NSC.Shop;
 using TMPro;
 using UnityEngine;
 
@@ -9,10 +11,20 @@ namespace NSC.Creature
 {
     public class NumberCreature : MonoBehaviour
     {
+        [Header("Rewards")]
+        [SerializeField] private NumberElementObject _numberRewardPrefab;
+        [SerializeField] private float _baseNumberRewardProb = 0.2f;
+        [SerializeField] private int _baseGoldAmount = 5;
+        public int GoldAmount => _baseGoldAmount;
+
+        public float NumberRewardProb => _baseNumberRewardProb;
+
+        [Header("Number Text")]
         [SerializeField] private TextMeshPro _numberText;
         [SerializeField] private float _textAnimScale;
         [SerializeField] private float _textAnimDuration;
         private Tweener _textAnim;
+
 
         public NumberElement Number { get; private set; }
 
@@ -29,10 +41,16 @@ namespace NSC.Creature
             if (Number.Equals(other.Number))
             {
                 // destroy myself
-                this.Die();
+                this.Die(true);
                 // destroy the other
-                other.Die();
-                // TODO: extra bonus
+                other.Die(true);
+                // extra bonus
+                var reward = GameObject.Instantiate(_numberRewardPrefab, transform.position, Quaternion.identity);
+                reward.SetNumber(new NumberElement(0));
+                reward.StartPickupAnimation(delegate
+                {
+                    ShopManager.Instance.Money += GoldAmount;
+                });
             }
             // other win
             else if (Number.CompareTo(other.Number) < 0)
@@ -52,10 +70,27 @@ namespace NSC.Creature
             }
         }
 
-        public virtual void Die()
+        public virtual void Die(bool definiteDrop = false)
         {
             Destroy(gameObject);
-            // TODO: basic reward
+            // basic money reward
+            var reward = GameObject.Instantiate(_numberRewardPrefab, transform.position, Quaternion.identity);
+            reward.SetNumber(new NumberElement(0));
+            reward.StartPickupAnimation(delegate
+            {
+                ShopManager.Instance.Money += 1;
+            });
+            // basic number reward
+            if (definiteDrop || Random.Range(0, 1) < NumberRewardProb)
+            {
+                reward = GameObject.Instantiate(_numberRewardPrefab, transform.position, Quaternion.identity);
+                reward.SetNumber(Number);
+                var number = Number;
+                reward.StartPickupAnimation(delegate
+                {
+                    InventoryManager.Instance.AddNumber(number);
+                });
+            }
         }
 
         public virtual void TakeDamage(NumberElement number)

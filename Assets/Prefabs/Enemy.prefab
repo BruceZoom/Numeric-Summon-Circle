@@ -272,13 +272,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97a730b8de22617459217264c1d1bff9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _moneyRewardPrefab: {fileID: 2605006646968070531, guid: 9b7bbfed68063dd4c99b2e3129791903, type: 3}
+  _numberRewardPrefab: {fileID: 2605006646968070531, guid: de26caa78891cb240afa84399a246fd9, type: 3}
+  _baseNumberRewardProb: 0.2
   _numberText: {fileID: 5774771273319486674}
   _textAnimScale: 0.1
   _textAnimDuration: 0.1
   _moveSpeed: 1
-  DeathCallback:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!61 &-3152965137666844936
 BoxCollider2D:
   m_ObjectHideFlags: 0
