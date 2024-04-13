@@ -6,7 +6,7 @@ using UnityEngine;
 namespace NSC.Number
 {
     [Serializable]
-    public class NumberElement
+    public class NumberElement: IComparable<NumberElement>
     {
         public NumberElement(int numerator, int denominator)
         {
@@ -68,7 +68,7 @@ namespace NSC.Number
             }
         }
 
-        private static NumberElement Sum(NumberElement operand1, NumberElement operand2)
+        public static NumberElement Sum(NumberElement operand1, NumberElement operand2)
         {
             int denGCD = GCD(Mathf.Abs(operand1.Denominator), Mathf.Abs(operand2.Denominator));
 
@@ -79,7 +79,7 @@ namespace NSC.Number
             return new NumberElement(num, den);
         }
 
-        private static NumberElement Subtract(NumberElement operand1, NumberElement operand2)
+        public static NumberElement Subtract(NumberElement operand1, NumberElement operand2)
         {
             int denGCD = GCD(Mathf.Abs(operand1.Denominator), Mathf.Abs(operand2.Denominator));
 
@@ -90,7 +90,7 @@ namespace NSC.Number
             return new NumberElement(num, den);
         }
 
-        private static NumberElement Multiply(NumberElement operand1, NumberElement operand2)
+        public static NumberElement Multiply(NumberElement operand1, NumberElement operand2)
         {
             int num = operand1.Numerator * operand2.Numerator;
             int den = operand1.Denominator * operand2.Denominator;
@@ -110,7 +110,7 @@ namespace NSC.Number
             return new NumberElement(num / gcd, den / gcd);
         }
 
-        private static NumberElement Divide(NumberElement operand1, NumberElement operand2)
+        public static NumberElement Divide(NumberElement operand1, NumberElement operand2)
         {
             int num = operand1.Numerator * operand2.Denominator;
             int den = operand1.Denominator * operand2.Numerator;
@@ -140,6 +140,13 @@ namespace NSC.Number
             }
 
             return a | b;
+        }
+
+        public int CompareTo(NumberElement other)
+        {
+            int a = this.Numerator * other.Denominator;
+            int b = other.Numerator * this.Denominator;
+            return a.CompareTo(b);
         }
     }
 }

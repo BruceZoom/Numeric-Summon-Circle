@@ -20,10 +20,10 @@ namespace NSC.Number
             _numberText.text = number.ToString();
         }
 
-        public void StartMoveAnimation(Vector3 from, Vector3 to, float duration)
+        public Tweener StartMoveAnimation(Vector3 from, Vector3 to, float duration)
         {
             transform.position = from;
-            transform.DOMove(to, duration)
+            return transform.DOMove(to, duration)
                 .SetEase(Ease.Linear)
                 .OnComplete(delegate
                 {

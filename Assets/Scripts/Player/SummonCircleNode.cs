@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
+using NSC.Creature;
 using NSC.Inventory;
 using NSC.Number;
 using NSC.Utils;
@@ -308,12 +309,14 @@ namespace NSC.Player
 
         private void Summon()
         {
-            // TODO:
-            Debug.Log($"Summon {_product}");
-
+            var number = _product;
             _product = null;
 
-            _productObject.StartMoveAnimation(transform.position, _circle.transform.position, _summonTime);
+            _productObject.StartMoveAnimation(transform.position, _circle.transform.position, _summonTime)
+                .OnComplete(delegate
+                {
+                    _circle.Summon(number);
+                });
         }
 
         private NumberElement ConsumeProduct()

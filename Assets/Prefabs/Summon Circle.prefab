@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 7340599137859649019}
   - component: {fileID: 7708458736473290735}
   - component: {fileID: 3178893668522427631}
+  - component: {fileID: 1805377180716805648}
   m_Layer: 0
   m_Name: Summon Circle
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -108,6 +109,42 @@ MonoBehaviour:
   - {fileID: 6846238481397271040}
   - {fileID: 1043981603036435891}
   - {fileID: 4884039092451127902}
+  _summonedCreaturePrefab: {fileID: 8477801810503438325, guid: 1a1d0ead1078e2f4081d04b2dfd0d582, type: 3}
+--- !u!58 &1805377180716805648
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8431219171290080532}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 2
 --- !u!1001 &589521832898805217
 PrefabInstance:
   m_ObjectHideFlags: 0
