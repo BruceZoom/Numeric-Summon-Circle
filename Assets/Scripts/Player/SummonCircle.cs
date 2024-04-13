@@ -9,7 +9,7 @@ namespace NSC.Player
     {
         [SerializeField] private List<SummonCircleNode> _nodes;
 
-        public float TotalNodes => _nodes.Count;
+        public int TotalNodes => _nodes.Count;
 
         private void Awake()
         {
