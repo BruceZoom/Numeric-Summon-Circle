@@ -54,9 +54,9 @@ namespace NSC.Data
                             return false;
                     }
                 case ShopOption.ImprovePot:
-                    return DataManager.Instance.PotGenerationTime > DataManager.Instance.Data.PotTimeMin;
+                    return DataManager.Instance.PotGenerationTime > DataManager.Instance.Data.PotTimeMin && GameManager.Instance.HasPot;
                 case ShopOption.AddPot:
-                    return GameManager.Instance.CanAddPot && GameManager.Instance.HasPot;
+                    return GameManager.Instance.CanAddPot;
                 case ShopOption.IncreaseCapacity:
                     return GameManager.Instance.SummonCapacity < DataManager.Instance.Data.CapacityMax;
                 case ShopOption.IncreaseMaxHP:

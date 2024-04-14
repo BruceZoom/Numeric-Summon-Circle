@@ -19,7 +19,7 @@ MonoBehaviour:
   <CostInc>k__BackingField: 0
   _type: 9
   <Op>k__BackingField: 0
-  <RandomWeight>k__BackingField: 10
+  <RandomWeight>k__BackingField: 5
   <MinNumber>k__BackingField:
     <Numerator>k__BackingField: -20
     <Denominator>k__BackingField: 2
