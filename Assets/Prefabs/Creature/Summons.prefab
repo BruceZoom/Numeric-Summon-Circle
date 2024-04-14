@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8477801810503438325}
   - component: {fileID: 4413158686443869175}
   - component: {fileID: -5353813214606685820}
+  - component: {fileID: 814755034409517268}
   m_Layer: 0
   m_Name: Summons
   m_TagString: Untagged
@@ -101,8 +102,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _numberRewardPrefab: {fileID: 2605006646968070531, guid: de26caa78891cb240afa84399a246fd9, type: 3}
-  _baseNumberRewardProb: 0.2
-  _baseGoldAmount: 5
   _numberText: {fileID: 1743302998309467093}
   _textAnimScale: 0.1
   _textAnimDuration: 0.1
@@ -180,6 +179,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &814755034409517268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1766021947982433972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0679a481f3d3c9e47a5e3e2b8d65b8a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tooltip: Right click to kill the minion. NOTHING will be returned.
 --- !u!1 &5024105179375578007
 GameObject:
   m_ObjectHideFlags: 0

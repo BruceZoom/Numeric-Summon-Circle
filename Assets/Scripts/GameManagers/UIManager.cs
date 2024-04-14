@@ -14,6 +14,7 @@ namespace NSC.UI
         [field: SerializeField] public TextMeshProUGUI MoneyText { get; private set; }
         [field: SerializeField] public TextMeshProUGUI CapacityText { get; private set; }
         [field: SerializeField] public HPBar HPBar { get; private set; }
+        [field: SerializeField] public Tooltip Tooltip { get; private set; }
 
         [field: SerializeField] public GameObject GameOverPanel { get; private set; }
 

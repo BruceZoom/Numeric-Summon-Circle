@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 6229002426474349038}
   - component: {fileID: 9063556048486409839}
   - component: {fileID: 6281641166338160609}
-  - component: {fileID: 6697516970304684388}
   m_Layer: 0
   m_Name: Summon Node
   m_TagString: Untagged
@@ -38,6 +37,7 @@ Transform:
   - {fileID: 848482688749598283}
   - {fileID: 2041900434111765165}
   - {fileID: 1674867040363403011}
+  - {fileID: 3969677238731447995}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &9063556048486409839
@@ -105,8 +105,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Op>k__BackingField: 0
-  _baseProductionTime: 1
-  _summonTime: 1
   _arrows:
   - {fileID: 635189146299671507}
   - {fileID: 1927445409381396613}
@@ -118,41 +116,6 @@ MonoBehaviour:
   <IsWaitingProductionStart>k__BackingField: 0
   <IsProductionFinished>k__BackingField: 0
   <IsProductAvailable>k__BackingField: 0
---- !u!58 &6697516970304684388
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 542594922000384809}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
 --- !u!1 &1277811937219261128
 GameObject:
   m_ObjectHideFlags: 0
@@ -165,6 +128,7 @@ GameObject:
   - component: {fileID: 4852251745045837124}
   - component: {fileID: 2222189790033147235}
   - component: {fileID: 5764124063128290206}
+  - component: {fileID: 4622586305474799106}
   m_Layer: 0
   m_Name: Number Slot
   m_TagString: Untagged
@@ -265,6 +229,119 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1277811937219261128}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
+--- !u!114 &4622586305474799106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1277811937219261128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0679a481f3d3c9e47a5e3e2b8d65b8a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tooltip: Drag number elements from inventory and drop onto the slot, then the
+    pot will start producing this number elements.
+  _clickCallback:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &3840260694453864905
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3969677238731447995}
+  - component: {fileID: 8542573865992820481}
+  - component: {fileID: 2495371567619406600}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3969677238731447995
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3840260694453864905}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6229002426474349038}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8542573865992820481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3840260694453864905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0679a481f3d3c9e47a5e3e2b8d65b8a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tooltip: Click to change the node to which the produced number element is sent.
+  _clickCallback:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6281641166338160609}
+        m_TargetAssemblyTypeName: NSC.Player.SummonCircleNode, Assembly-CSharp
+        m_MethodName: OnPointerClick
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!58 &2495371567619406600
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3840260694453864905}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}

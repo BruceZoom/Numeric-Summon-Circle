@@ -222,6 +222,7 @@ GameObject:
   - component: {fileID: 4143881895248996120}
   - component: {fileID: 6604843013310468004}
   - component: {fileID: 3173347444868012494}
+  - component: {fileID: -3568081781757531569}
   m_Layer: 5
   m_Name: NumberElementUI
   m_TagString: Untagged
@@ -306,6 +307,22 @@ MonoBehaviour:
   <Number>k__BackingField:
     <Numerator>k__BackingField: 1
     <Denominator>k__BackingField: 1
+--- !u!114 &-3568081781757531569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5476144753304104333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0679a481f3d3c9e47a5e3e2b8d65b8a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tooltip: Drag the number element and drop it onto outer nodes or pot to use it.
+  _clickCallback:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6505846272863208610
 GameObject:
   m_ObjectHideFlags: 0

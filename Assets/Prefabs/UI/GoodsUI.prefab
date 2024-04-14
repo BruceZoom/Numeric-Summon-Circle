@@ -431,6 +431,7 @@ GameObject:
   - component: {fileID: 5268144330372878056}
   - component: {fileID: 3996821070874265172}
   - component: {fileID: 6896420169846598336}
+  - component: {fileID: -3633047073612994168}
   m_Layer: 5
   m_Name: GoodsUI
   m_TagString: Untagged
@@ -568,3 +569,19 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &-3633047073612994168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3980309705298698087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0679a481f3d3c9e47a5e3e2b8d65b8a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tooltip: Click to purchase this item.
+  _clickCallback:
+    m_PersistentCalls:
+      m_Calls: []
