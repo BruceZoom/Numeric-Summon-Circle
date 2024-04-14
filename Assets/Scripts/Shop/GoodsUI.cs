@@ -47,7 +47,7 @@ namespace NSC.Shop
                 // set UI
                 _nameText.text = _definition.GoodsName + $"\n{_number}  x{_count}";
                 _descriptionText.text = _definition.GoodsDescription;
-                _costText.text = $"Cost: {Cost}";
+                _costText.text = $"Cost: {Cost}<sprite name=\"money\">";
             }
             else
             {
@@ -55,7 +55,7 @@ namespace NSC.Shop
                 // set UI
                 _nameText.text = _definition.GoodsName;
                 _descriptionText.text = _definition.GoodsDescription;
-                _costText.text = $"Cost: {Cost}";
+                _costText.text = $"Cost: {Cost}<sprite name=\"money\">";
             }
         }
 

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,6 +9,7 @@ namespace NSC.Player
 {
     public class HPBar : MonoBehaviour
     {
+        [SerializeField] private float _animTime = 0.5f;
         public Transform FollowTarget { private get; set; }
         [field:SerializeField] private Image Fill { get; set; }
         [field: SerializeField] private TextMeshProUGUI Text { get; set; }
@@ -21,7 +23,7 @@ namespace NSC.Player
 
         public void SetHP(float cur, float max)
         {
-            Fill.fillAmount = cur / max;
+            Fill.DOFillAmount(cur / max, _animTime);
             Text.text = $"{cur:#.##} / {max}";
         }
     }

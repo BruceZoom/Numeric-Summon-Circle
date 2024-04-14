@@ -6,6 +6,7 @@ using NSC.Inventory;
 using NSC.Number;
 using NSC.Shop;
 using NSC.Utils;
+using NSC.VFX;
 using TMPro;
 using UnityEngine;
 
@@ -13,6 +14,8 @@ namespace NSC.Creature
 {
     public class NumberCreature : MonoBehaviour
     {
+        [SerializeField] protected DamageVFX _damageVFX;
+
         [Header("Rewards")]
         [SerializeField] private NumberElementObject _numberRewardPrefab;
         public int GoldAmount => DataManager.Instance.GoldValue;
@@ -106,6 +109,9 @@ namespace NSC.Creature
                     InventoryManager.Instance.AddNumber(number);
                 });
             }
+
+            // vfx
+            GameObject.Instantiate(_damageVFX, transform.position, Quaternion.identity);
         }
 
         public virtual void TakeDamage(NumberElement number)
@@ -115,6 +121,7 @@ namespace NSC.Creature
             {
                 _textAnim = _numberText.transform.DOPunchScale(Vector3.one * _textAnimScale, _textAnimDuration, 1, 0);
             }
+            GameObject.Instantiate(_damageVFX, transform.position, Quaternion.identity);
         }
     }
 }

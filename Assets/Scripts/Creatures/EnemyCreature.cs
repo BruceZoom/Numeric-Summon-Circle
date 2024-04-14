@@ -35,6 +35,9 @@ namespace NSC.Creature
                 // damage player
                 GameManager.Instance.TakeDamage((float)Number.Numerator / Number.Denominator);
 
+                var vfx = GameObject.Instantiate(_damageVFX, transform.position / 2, Quaternion.identity);
+                vfx.AnimScale = 2;
+
                 Die();
             }
         }

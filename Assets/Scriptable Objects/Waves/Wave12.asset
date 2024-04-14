@@ -53,6 +53,6 @@ MonoBehaviour:
     MaxNumber:
       <Numerator>k__BackingField: 100
       <Denominator>k__BackingField: 20
-  MinSpawnDuration: 3
+  MinSpawnDuration: 4
   MaxSpawnDuration: 6
   RestTime: 10

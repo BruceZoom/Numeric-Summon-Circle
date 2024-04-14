@@ -13,6 +13,8 @@ namespace NSC.Number
     {
         private Rigidbody2D _rb;
 
+        [SerializeField] private float _spawnAnimTime = 0.2f;
+
         [SerializeField] private Sprite _moneySprite;
         [SerializeField] private Sprite _numberSprite;
         [SerializeField] private Sprite _goldSprite;
@@ -31,6 +33,11 @@ namespace NSC.Number
             _rb.bodyType = RigidbodyType2D.Kinematic;
 
             SpriteRend = GetComponent<SpriteRenderer>();
+        }
+
+        private void Start()
+        {
+            transform.DOScale(1f, _spawnAnimTime).From(0f);
         }
 
         public void SetNumber(NumberElement number, bool isGold = false)

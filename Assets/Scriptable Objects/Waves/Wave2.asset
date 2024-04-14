@@ -16,13 +16,13 @@ MonoBehaviour:
   - Number:
       <Numerator>k__BackingField: 8
       <Denominator>k__BackingField: 1
-    Count: 15
+    Count: 10
     MinNumber:
       <Numerator>k__BackingField: 0
       <Denominator>k__BackingField: 0
     MaxNumber:
       <Numerator>k__BackingField: 0
       <Denominator>k__BackingField: 0
-  MinSpawnDuration: 8
-  MaxSpawnDuration: 10
-  RestTime: 10
+  MinSpawnDuration: 12
+  MaxSpawnDuration: 16
+  RestTime: 15

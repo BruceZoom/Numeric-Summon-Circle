@@ -13,10 +13,18 @@ MonoBehaviour:
   m_Name: IncreaseGoldValue
   m_EditorClassIdentifier: 
   <GoodsName>k__BackingField: Gold Value Up
-  <GoodsDescription>k__BackingField: Increase the value of gold dropped when an enemy
-    is perfectly eliminated.
+  <GoodsDescription>k__BackingField: Increase the value of gold <sprite name=\"gold\">
+    dropped when an enemy is perfectly eliminated.
   <BaseCost>k__BackingField: 20
   <CostInc>k__BackingField: 20
   _type: 7
   <Op>k__BackingField: 0
   <RandomWeight>k__BackingField: 1
+  <MinNumber>k__BackingField:
+    <Numerator>k__BackingField: 0
+    <Denominator>k__BackingField: 0
+  <MaxNumber>k__BackingField:
+    <Numerator>k__BackingField: 0
+    <Denominator>k__BackingField: 0
+  <MinCount>k__BackingField: 0
+  <MaxCount>k__BackingField: 0

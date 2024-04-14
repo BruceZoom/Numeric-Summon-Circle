@@ -149,7 +149,7 @@ namespace NSC.Creature
             Vector2 viewPos = Vector2.zero;
             if (dist <= 1)
             {
-                viewPos = new Vector2(0, dist);
+                viewPos = new Vector2(0, dist / 2 + 0.4f);
             }
             else if (dist <= 2 && Mathf.Abs(number.Numerator) <= 16)
             {
@@ -157,7 +157,7 @@ namespace NSC.Creature
             }
             else
             {
-                viewPos = new Vector2(1, dist - 2);
+                viewPos = new Vector2(1, (dist - 2) / 2 + 0.4f);
             }
 
             return Camera.main.ViewportToWorldPoint(viewPos).SetZ(0);

@@ -20,7 +20,7 @@ namespace NSC.Shop
             {
                 _money = value;
                 // update UI
-                UIManager.Instance.MoneyText.text = $"Money: {_money}";
+                UIManager.Instance.MoneyText.text = $"Money <sprite name=\"money\">: {_money}";
             }
         }
 
