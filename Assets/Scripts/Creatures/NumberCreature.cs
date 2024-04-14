@@ -26,14 +26,20 @@ namespace NSC.Creature
         [SerializeField] private float _textAnimDuration;
         private Tweener _textAnim;
 
+        private Vector3 _initScale;
 
         public NumberElement Number { get; private set; }
+
+        protected virtual void Awake()
+        {
+            _initScale = transform.localScale;
+        }
 
         public void SetNumber(NumberElement number)
         {
             Number = number;
             _numberText.text = number.ToString();
-            transform.localScale *= (0.8f + Mathf.Abs(number.IntegerPart) / 10);
+            transform.localScale = _initScale * Mathf.Min(0.8f + Mathf.Abs(number.IntegerPart) / 20, 5f);
         }
 
         protected virtual void Update()
@@ -105,8 +111,7 @@ namespace NSC.Creature
 
         public virtual void TakeDamage(NumberElement number)
         {
-            Number = NumberElement.Subtract(Number, number);
-            _numberText.text = Number.ToString();
+            SetNumber(NumberElement.Subtract(Number, number));
             if (_textAnim == null || !_textAnim.IsActive())
             {
                 _textAnim = _numberText.transform.DOPunchScale(Vector3.one * _textAnimScale, _textAnimDuration, 1, 0);

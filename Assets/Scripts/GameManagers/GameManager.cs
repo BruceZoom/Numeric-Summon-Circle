@@ -7,6 +7,7 @@ using NSC.UI;
 using NSC.Utils;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace NSC
 {
@@ -40,7 +41,7 @@ namespace NSC
             private set
             {
                 _maxHP = value;
-                UIManager.Instance.HPBar.Fill.fillAmount = _curHP / _maxHP;
+                UIManager.Instance.HPBar.SetHP(_curHP, _maxHP);
             }
         }
         public float CurHP
@@ -58,13 +59,14 @@ namespace NSC
                     _curHP = 0;
                     GameOver();
                 }
-                UIManager.Instance.HPBar.Fill.fillAmount = _curHP / _maxHP;
+                UIManager.Instance.HPBar.SetHP(_curHP, _maxHP);
             }
         }
 
         private void GameOver()
         {
-            Debug.Log("Game Over");
+            UIManager.Instance.GameOverPanel.SetActive(true);
+            Time.timeScale = 0;
         }
 
         public override void Initialize()
@@ -76,11 +78,18 @@ namespace NSC
 
             MaxHP = _initHP;
             CurHP = MaxHP;
+
+            Time.timeScale = 1;
         }
 
         public void TakeDamage(float amount)
         {
             CurHP -= amount;
+        }
+
+        public void Retry()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }

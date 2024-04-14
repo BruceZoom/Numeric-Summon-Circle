@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace NSC.Shop
+namespace NSC.Data
 {
     [CreateAssetMenu]
     public class GoodsDefinition : ScriptableObject
@@ -14,7 +14,7 @@ namespace NSC.Shop
 
         [field: SerializeField, Space(10)] public int RandomWeight { get; private set; }
 
-        
+
 
         public int Cost => BaseCost;
 

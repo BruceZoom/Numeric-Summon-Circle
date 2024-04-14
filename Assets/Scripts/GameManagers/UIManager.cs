@@ -15,10 +15,26 @@ namespace NSC.UI
         [field: SerializeField] public TextMeshProUGUI CapacityText { get; private set; }
         [field: SerializeField] public HPBar HPBar { get; private set; }
 
+        [field: SerializeField] public GameObject GameOverPanel { get; private set; }
+
+        private Button _retryButton;
 
         public override void Initialize()
         {
             base.Initialize();
+
+            _retryButton = GameOverPanel.GetComponentInChildren<Button>();
+            GameOverPanel.SetActive(false);
+        }
+
+        private void OnEnable()
+        {
+            _retryButton.onClick.AddListener(GameManager.Instance.Retry);
+        }
+
+        private void OnDisable()
+        {
+            _retryButton.onClick.RemoveListener(GameManager.Instance.Retry);
         }
     }
 }

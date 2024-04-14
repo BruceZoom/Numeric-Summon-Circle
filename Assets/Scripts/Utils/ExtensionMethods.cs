@@ -125,5 +125,10 @@ namespace NSC.Utils
         {
             return list[list.Count - 1];
         }
+
+        public static List<T> Shuffle<T>(this List<T> list)
+        {
+            return list.OrderBy(x => Random.value).ToList();
+        }
     }
 }

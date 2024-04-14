@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using NSC.Data;
 using NSC.UI;
 using NSC.Utils;
 using TMPro;
@@ -56,11 +57,13 @@ namespace NSC.Shop
         private void OnEnable()
         {
             _refreshButton.onClick.AddListener(RefreshButtonClick);
+            Time.timeScale = 0;
         }
 
         private void OnDisable()
         {
             _refreshButton.onClick.RemoveListener(RefreshButtonClick);
+            Time.timeScale = 1;
         }
 
         private void OnDestroy()

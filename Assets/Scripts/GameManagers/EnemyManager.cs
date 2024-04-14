@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using NSC.Data;
 using NSC.Number;
 using NSC.Utils;
 using UnityEngine;
@@ -12,8 +14,21 @@ namespace NSC.Creature
 
         public List<EnemyCreature> EnemyCreatures { get; private set; }
 
-        [SerializeField] private float _spawnInterval;
+        //[SerializeField] private float _spawnInterval;
         private float _spawnTimer;
+        private float _restTimer;
+
+        [SerializeField] private List<WaveData> _waves;
+
+        private int _curWaveIdx = -1;
+        private int _curEnemyIdx;
+
+        private List<NumberElement> _waveNumbers;
+
+        public bool LevelClear => _curWaveIdx >= _waves.Count;
+        public bool WaveFinished => _curEnemyIdx >= _waveNumbers.Count;
+        public WaveData CurWave => _waves[_curWaveIdx];
+
 
         private void Awake()
         {
@@ -25,20 +40,81 @@ namespace NSC.Creature
             base.Initialize();
 
             EnemyCreatures = new List<EnemyCreature>();
+            _waveNumbers = new List<NumberElement>();
+            GoToNextWave();
         }
 
         private void Update()
         {
-            _spawnTimer -= Time.deltaTime;
-            if (_spawnTimer <= 0)
+            if (!LevelClear)
             {
-                _spawnTimer = _spawnInterval;
+                if (_restTimer <= 0)
+                {
+                    _spawnTimer -= Time.deltaTime;
+                    if (_spawnTimer <= 0)
+                    {
+                        _spawnTimer = SpawnEnemy();
 
-                SpawnEnemy();
+                        if (_spawnTimer < 0)
+                        {
+                            _restTimer = -_spawnTimer;
+                            GoToNextWave();
+                        }
+                    }
+                }
+                else
+                {
+                    _restTimer -= Time.deltaTime;
+                }
             }
         }
 
-        private void SpawnEnemy()
+        private void GoToNextWave()
+        {
+            _curWaveIdx += 1;
+            if (LevelClear)
+            {
+                // TODO:
+                Debug.Log("Game Clear!");
+                return;
+            }
+
+            // generate enemy list
+            _waveNumbers.Clear();
+            foreach (var enemy in CurWave.Enemies)
+            {
+                var nums = CurWave.GenerateEnemyNumbers(enemy);
+                _waveNumbers = _waveNumbers.Concat(nums).ToList();
+            }
+            _waveNumbers = _waveNumbers.Shuffle();
+            _curEnemyIdx = 0;
+        }
+
+        /// <summary>
+        /// Returns minus value for restTimer value.
+        /// </summary>
+        /// <returns></returns>
+        private float SpawnEnemy()
+        {
+            var number = _waveNumbers[_curEnemyIdx];
+            _curEnemyIdx += 1;
+            var pos = GetRandomSpawnPosition(number);
+            var enemy = GameObject.Instantiate(_enemyPrefab, pos, Quaternion.identity);
+            
+            enemy.SetNumber(number);
+            EnemyCreatures.Add(enemy);
+
+            if (WaveFinished)
+            {
+                return -CurWave.RestTime;
+            }
+            else
+            {
+                return Random.Range(CurWave.MinSpawnDuration, CurWave.MaxSpawnDuration);
+            }
+        }
+
+        private Vector3 GetRandomSpawnPosition(NumberElement number)
         {
             var dist = Random.Range(0f, 3f);
             Vector2 viewPos = Vector2.zero;
@@ -46,7 +122,7 @@ namespace NSC.Creature
             {
                 viewPos = new Vector2(0, dist);
             }
-            else if (dist <= 2)
+            else if (dist <= 2 && Mathf.Abs(number.Numerator) <= 16)
             {
                 viewPos = new Vector2(dist - 1, 1);
             }
@@ -55,10 +131,7 @@ namespace NSC.Creature
                 viewPos = new Vector2(1, dist - 2);
             }
 
-            var enemy = GameObject.Instantiate(_enemyPrefab, Camera.main.ViewportToWorldPoint(viewPos).SetZ(0), Quaternion.identity);
-            // TODO: test only
-            enemy.SetNumber(new NumberElement(2, 1));
-            EnemyCreatures.Add(enemy);
+            return Camera.main.ViewportToWorldPoint(viewPos).SetZ(0);
         }
 
         public void UntrackEnemy(EnemyCreature enemy)

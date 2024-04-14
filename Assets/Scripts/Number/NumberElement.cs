@@ -12,6 +12,13 @@ namespace NSC.Number
         {
             Numerator = numerator;
             Denominator = denominator;
+
+            var gcd = GCD(Numerator, Denominator);
+            if (gcd > 1)
+            {
+                Numerator /= gcd;
+                Denominator /= gcd;
+            }
         }
 
         [field: SerializeField] public int Numerator { get; private set; } = 1;
