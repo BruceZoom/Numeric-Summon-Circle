@@ -115,7 +115,6 @@ namespace NSC.Number
             }
 
             int gcd = GCD(Mathf.Abs(num), Mathf.Abs(den));
-            Debug.Log((int)(Mathf.Sign(num) * Mathf.Sign(den)));
             return new NumberElement(num / gcd, den / gcd);
         }
 

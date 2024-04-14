@@ -4,6 +4,7 @@ using System.Linq;
 using NSC.Data;
 using NSC.Number;
 using NSC.Utils;
+using TMPro;
 using UnityEngine;
 
 namespace NSC.Creature
@@ -24,10 +25,14 @@ namespace NSC.Creature
         private int _curEnemyIdx;
 
         private List<NumberElement> _waveNumbers;
+        private List<NumberElement> _nextWaveNumbers;
 
         public bool LevelClear => _curWaveIdx >= _waves.Count;
         public bool WaveFinished => _curEnemyIdx >= _waveNumbers.Count;
         public WaveData CurWave => _waves[_curWaveIdx];
+        public WaveData NextWave => _waves[Mathf.Min(_waves.Count - 1, _curWaveIdx + 1)];
+
+        [SerializeField] private TextMeshProUGUI _waveText;
 
 
         private void Awake()
@@ -41,6 +46,8 @@ namespace NSC.Creature
 
             EnemyCreatures = new List<EnemyCreature>();
             _waveNumbers = new List<NumberElement>();
+            _nextWaveNumbers = new List<NumberElement>();
+
             GoToNextWave();
         }
 
@@ -71,23 +78,45 @@ namespace NSC.Creature
 
         private void GoToNextWave()
         {
+            if (_nextWaveNumbers.Count == 0)
+            {
+                GenerateNextWave();
+            }
+
             _curWaveIdx += 1;
             if (LevelClear)
             {
-                // TODO:
-                Debug.Log("Game Clear!");
-                return;
+                _curWaveIdx -= 1;
             }
 
-            // generate enemy list
+            // set current wave
             _waveNumbers.Clear();
-            foreach (var enemy in CurWave.Enemies)
-            {
-                var nums = CurWave.GenerateEnemyNumbers(enemy);
-                _waveNumbers = _waveNumbers.Concat(nums).ToList();
-            }
-            _waveNumbers = _waveNumbers.Shuffle();
+            _waveNumbers = _nextWaveNumbers.ToList();
             _curEnemyIdx = 0;
+
+            // prepare next wave
+            GenerateNextWave();
+
+            _waveText.text = $"Next Wave: ";
+            bool isFirst = true;
+            foreach (var number in _nextWaveNumbers.Distinct())
+            {
+                if (!isFirst) _waveText.text += ", ";
+                _waveText.text += number.ToString();
+                isFirst = false;
+            }
+        }
+
+        private void GenerateNextWave()
+        {
+            // generate enemy list
+            _nextWaveNumbers.Clear();
+            foreach (var enemy in NextWave.Enemies)
+            {
+                var nums = NextWave.GenerateEnemyNumbers(enemy);
+                _nextWaveNumbers = _nextWaveNumbers.Concat(nums).ToList();
+            }
+            _nextWaveNumbers = _nextWaveNumbers.Shuffle();
         }
 
         /// <summary>

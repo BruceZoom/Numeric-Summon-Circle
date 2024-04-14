@@ -31,9 +31,9 @@ namespace NSC.Data
             // random
             if (enemy.Number.Numerator == 0)
             {
+                var num = NumberElement.RandomNumberElement(enemy.MinNumber, enemy.MaxNumber);
                 for (int i = 0; i < enemy.Count; i++)
                 {
-                    var num = NumberElement.RandomNumberElement(enemy.MinNumber, enemy.MaxNumber);
                     res.Add(num);
                 }
             }
