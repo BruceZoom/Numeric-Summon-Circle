@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using NSC.Utils;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace NSC.UI
 {
@@ -10,6 +11,7 @@ namespace NSC.UI
     {
         [field: SerializeField] public Transform InventoryUI { get; private set; }
         [field: SerializeField] public TextMeshProUGUI MoneyText { get; private set; }
+
 
         private void Awake()
         {
