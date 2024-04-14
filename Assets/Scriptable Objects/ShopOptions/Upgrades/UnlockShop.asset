@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32db441cc061f2144b257a4e27749ca5, type: 3}
+  m_Name: UnlockShop
+  m_EditorClassIdentifier: 
+  <GoodsName>k__BackingField: Unlock Shop Slot
+  <GoodsDescription>k__BackingField: Unlock a new purchase option in the shop. Takes
+    effect the next time you refresh the shop.
+  <BaseCost>k__BackingField: 50
+  <CostInc>k__BackingField: 50
+  _type: 8
+  <Op>k__BackingField: 0
+  <RandomWeight>k__BackingField: 1
+  <MinNumber>k__BackingField:
+    <Numerator>k__BackingField: 0
+    <Denominator>k__BackingField: 0
+  <MaxNumber>k__BackingField:
+    <Numerator>k__BackingField: 0
+    <Denominator>k__BackingField: 0
+  <MinCount>k__BackingField: 0
+  <MaxCount>k__BackingField: 0

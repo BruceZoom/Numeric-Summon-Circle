@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using NSC.Data;
 using NSC.Player;
 using NSC.Shop;
 using NSC.UI;
@@ -13,12 +14,21 @@ namespace NSC
 {
     public class GameManager : MonoSingleton<GameManager>
     {
+        [SerializeField] private DataManager _dataManager;
         [SerializeField] private UIManager _uIManager;
         [SerializeField] private ShopManager _shopManager;
 
         [SerializeField] private List<Pot> _pots;
 
-        [field: SerializeField] public int SummonCapacity { get; private set; } = 5;
+        public int SummonCapacity
+        {
+            get => _summonCapacity;
+            set
+            {
+                _summonCapacity = value;
+                UIManager.Instance.CapacityText.text = $"Capacity: {_currentSummons}/{SummonCapacity}";
+            }
+        }
         private int _currentSummons;
         public int CurrentSummons
         {
@@ -30,10 +40,9 @@ namespace NSC
             }
         }
 
-        [SerializeField] private float _initHP = 100;
-
         private float _maxHP;
         private float _curHP;
+        private int _summonCapacity;
 
         public float MaxHP
         {
@@ -71,12 +80,16 @@ namespace NSC
 
         public override void Initialize()
         {
+            _dataManager.Initialize();
+
             _uIManager.Initialize();
 
             _shopManager.Initialize();
+
+            SummonCapacity = DataManager.Instance.Data.CapacityBase;
             CurrentSummons = 0;
 
-            MaxHP = _initHP;
+            MaxHP = DataManager.Instance.Data.HPBase;
             CurHP = MaxHP;
 
             Time.timeScale = 1;

@@ -10,10 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 32db441cc061f2144b257a4e27749ca5, type: 3}
-  m_Name: IncreaseDropRate
+  m_Name: IncreaseMaxCapacity
   m_EditorClassIdentifier: 
-  <GoodsName>k__BackingField: Grop Rate Up
-  <GoodsDescription>k__BackingField: Increase the drop rate of number element when
-    a creature dies.
-  <BaseCost>k__BackingField: 20
+  <GoodsName>k__BackingField: Increase Capacity
+  <GoodsDescription>k__BackingField: Increase the max number of number minions you
+    can summon.
+  <BaseCost>k__BackingField: 50
+  <CostInc>k__BackingField: 50
+  _type: 3
+  <Op>k__BackingField: 0
   <RandomWeight>k__BackingField: 1

@@ -10,10 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 32db441cc061f2144b257a4e27749ca5, type: 3}
-  m_Name: IncreaseGoldValue
+  m_Name: ImproveNode Add
   m_EditorClassIdentifier: 
-  <GoodsName>k__BackingField: Gold Value Up
-  <GoodsDescription>k__BackingField: Increase the value of gold dropped when an enemy
-    is perfectly eliminated.
-  <BaseCost>k__BackingField: 20
-  <RandomWeight>k__BackingField: 2
+  <GoodsName>k__BackingField: Improve Node - Addition
+  <GoodsDescription>k__BackingField: Improve the efficiency of the addition node
+    by 20%.
+  <BaseCost>k__BackingField: 15
+  <CostInc>k__BackingField: 15
+  _type: 0
+  <Op>k__BackingField: 1
+  <RandomWeight>k__BackingField: 1

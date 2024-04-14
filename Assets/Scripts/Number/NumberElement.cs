@@ -13,7 +13,7 @@ namespace NSC.Number
             Numerator = numerator;
             Denominator = denominator;
 
-            var gcd = GCD(Numerator, Denominator);
+            var gcd = GCD(Mathf.Abs(Numerator), Mathf.Abs(Denominator));
             if (gcd > 1)
             {
                 Numerator /= gcd;
@@ -26,6 +26,8 @@ namespace NSC.Number
 
         public int IntegerPart => Numerator / Denominator;
         public int FractionPart => Numerator % Denominator;
+
+        public float Value => (float)Numerator / Denominator;
 
         public override string ToString()
         {
@@ -154,6 +156,15 @@ namespace NSC.Number
             int a = this.Numerator * other.Denominator;
             int b = other.Numerator * this.Denominator;
             return a.CompareTo(b);
+        }
+
+        public static NumberElement RandomNumberElement(NumberElement MinNumber, NumberElement MaxNumber)
+        {
+            var num = UnityEngine.Random.Range(MinNumber.Numerator, MaxNumber.Numerator);
+            var den = UnityEngine.Random.Range(MinNumber.Denominator, MaxNumber.Denominator);
+            num = (num == 0 ? 1 : num);
+            den = (den == 0 ? 1 : den);
+            return new NumberElement(num, den);
         }
     }
 }

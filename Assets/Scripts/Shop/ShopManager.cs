@@ -24,6 +24,8 @@ namespace NSC.Shop
             }
         }
 
+        public Dictionary<GoodsDefinition, int> Costs { get => _costs; private set => _costs = value; }
+        
         [Header("UI References")]
         [SerializeField] private Button _shopButton;
         [SerializeField] private Button _refreshButton;
@@ -34,14 +36,25 @@ namespace NSC.Shop
 
         [Header("Shop Settings")]
         [SerializeField] private List<GoodsDefinition> _allGoods;
-        [SerializeField] private int _maxGoods;
         [SerializeField] private int _refreshCost;
 
+        public int MaxGoods { get; set; }
+
         private List<GoodsUI> _goods;
+        Dictionary<GoodsDefinition, int> _costs;
 
         public override void Initialize()
         {
             base.Initialize();
+
+            // initial max goods
+            MaxGoods = 3;
+            // initial cost
+            Costs = new Dictionary<GoodsDefinition, int>();
+            foreach (var goods in _allGoods)
+            {
+                Costs.Add(goods, goods.BaseCost);
+            }
 
             _goods = new List<GoodsUI>();
 
@@ -105,7 +118,7 @@ namespace NSC.Shop
             foreach (var def in defs)
             {
                 var ui = GameObject.Instantiate(_goodsUIPrefab, _goodsParent);
-                ui.SetGoods(def);
+                ui.SetGoods(def, Costs[def]);
                 _goods.Add(ui);
             }
         }
@@ -114,7 +127,7 @@ namespace NSC.Shop
         {
             var goods = new List<GoodsDefinition>();
             var total = _allGoods.Sum(g => g.RandomWeight);
-            while (goods.Count < _maxGoods)
+            while (goods.Count < MaxGoods)
             {
                 var r = Random.Range(0, total);
                 var good = GetGoodsWithWeight(r);
@@ -124,6 +137,7 @@ namespace NSC.Shop
                     good = GetGoodsWithWeight(r);
                 }
                 goods.Add(good);
+                print(goods.Count);
             }
             return goods;
         }

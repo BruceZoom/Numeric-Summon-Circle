@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 671ab286ae573bf4aa926a1f54da4600, type: 3}
+  m_Name: Data Definition
+  m_EditorClassIdentifier: 
+  <AddTimeBase>k__BackingField: 3
+  <MultiplyTimeBase>k__BackingField: 10
+  <SubtractTimeBase>k__BackingField: 4
+  <DivideTimeBase>k__BackingField: 8
+  <AddTimeMultiplierDec>k__BackingField: 0.2
+  <MultilyTimeMultiplierDec>k__BackingField: 0.2
+  <SubtractTimeMultiplierDec>k__BackingField: 0.2
+  <DivideTimeMultiplierDec>k__BackingField: 0.2
+  <SummonTime>k__BackingField: 1
+  <PotTimeBase>k__BackingField: 16
+  <PotTimeMultiplierDec>k__BackingField: 0.125
+  <PotTimeMin>k__BackingField: 1
+  <CapacityBase>k__BackingField: 5
+  <CapacityInc>k__BackingField: 5
+  <CapacityMax>k__BackingField: 20
+  <HPBase>k__BackingField: 10
+  <HPInc>k__BackingField: 10
+  <HPMax>k__BackingField: 100
+  <HPRecoverRatio>k__BackingField: 0.2
+  <NumberDropRateBase>k__BackingField: 0.05
+  <NumberDropRateInc>k__BackingField: 0.05
+  <NumberDropRateMax>k__BackingField: 0.2
+  <GoldValueBase>k__BackingField: 5
+  <GoldValueInc>k__BackingField: 5
+  <GoldValueMax>k__BackingField: 50
+  <MagnitudeCostCoef>k__BackingField: 2
+  <DenoDiscountLimit>k__BackingField: 0.5

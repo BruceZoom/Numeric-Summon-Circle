@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using NSC.Data;
 using NSC.Inventory;
 using NSC.Number;
 using NSC.Shop;
@@ -14,11 +15,9 @@ namespace NSC.Creature
     {
         [Header("Rewards")]
         [SerializeField] private NumberElementObject _numberRewardPrefab;
-        [SerializeField] private float _baseNumberRewardProb = 0.2f;
-        [SerializeField] private int _baseGoldAmount = 5;
-        public int GoldAmount => _baseGoldAmount;
+        public int GoldAmount => DataManager.Instance.GoldValue;
 
-        public float NumberRewardProb => _baseNumberRewardProb;
+        public float NumberRewardProb => DataManager.Instance.NumberDropRate;
 
         [Header("Number Text")]
         [SerializeField] private TextMeshPro _numberText;

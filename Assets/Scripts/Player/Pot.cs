@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using NSC.Data;
 using NSC.Inventory;
 using NSC.Number;
 using TMPro;
@@ -19,9 +20,7 @@ namespace NSC.Player
         [SerializeField] private float _animDuration;
         [SerializeField] private Transform _generatePoint;
 
-        [SerializeField] private float _baseGenerateDuration;
-
-        public float GenerateDuration => _baseGenerateDuration;
+        public float GenerateDuration => DataManager.Instance.PotGenerationTime;
         private float _generationTimer;
 
         private NumberElement _number;

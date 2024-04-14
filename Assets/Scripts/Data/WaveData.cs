@@ -33,11 +33,8 @@ namespace NSC.Data
             {
                 for (int i = 0; i < enemy.Count; i++)
                 {
-                    var num = UnityEngine.Random.Range(enemy.MinNumber.Numerator, enemy.MaxNumber.Numerator);
-                    var den = UnityEngine.Random.Range(enemy.MinNumber.Denominator, enemy.MaxNumber.Denominator);
-                    num = (num == 0 ? 1 : num);
-                    den = (den == 0 ? 1 : den);
-                    res.Add(new NumberElement(num, den));
+                    var num = NumberElement.RandomNumberElement(enemy.MinNumber, enemy.MaxNumber);
+                    res.Add(num);
                 }
             }
             // fixed

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
 using NSC.Creature;
+using NSC.Data;
 using NSC.Inventory;
 using NSC.Number;
 using NSC.Utils;
@@ -26,11 +27,15 @@ namespace NSC.Player
 
         private SpriteRenderer _sprite;
 
+        public float ProductionTime => Op switch {
+            Operator.Sum => DataManager.Instance.AddTime,
+            Operator.Subtract => DataManager.Instance.SubtractTime,
+            Operator.Multiply => DataManager.Instance.MultiplyTime,
+            Operator.Divide => DataManager.Instance.DivideTime,
+            _ => DataManager.Instance.Data.SummonTime,
+        };
 
-        [SerializeField] private float _baseProductionTime = 1f;
-        public float ProductionTime => _baseProductionTime; // TODO:
-
-        [SerializeField] private float _summonTime = 0.5f;
+        private float SummonTime => DataManager.Instance.Data.SummonTime;
 
 
         [Header("Object References")]
@@ -311,7 +316,7 @@ namespace NSC.Player
             var number = _product;
             _product = null;
 
-            _productObject.StartMoveAnimation(transform.position, _circle.transform.position, _summonTime).onComplete += delegate
+            _productObject.StartMoveAnimation(transform.position, _circle.transform.position, SummonTime).onComplete += delegate
             {
                 _circle.Summon(number);
             };

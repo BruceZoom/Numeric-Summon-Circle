@@ -142,7 +142,7 @@ MonoBehaviour:
   - {fileID: 1043981603036435891}
   - {fileID: 4884039092451127902}
   _summonedCreaturePrefab: {fileID: 8477801810503438325, guid: 1a1d0ead1078e2f4081d04b2dfd0d582, type: 3}
-  _numberElementPrefab: {fileID: 0}
+  _numberElementPrefab: {fileID: 2605006646968070531, guid: de26caa78891cb240afa84399a246fd9, type: 3}
   _hpPosition: {fileID: 5113130230729263600}
 --- !u!58 &1805377180716805648
 CircleCollider2D:
