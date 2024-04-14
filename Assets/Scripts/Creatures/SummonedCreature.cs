@@ -23,9 +23,10 @@ namespace NSC.Creature
             _rb = GetComponent<Rigidbody2D>();
         }
 
-        private void Update()
+        protected override void Update()
         {
-            // FIXME: use callbacks to unbind tracked but dead enemy
+            base.Update();
+
             _nextTargetUpdateTime -= Time.deltaTime;
             if (_nextTargetUpdateTime <= 0 || _trackTarget == null)
             {

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using NSC.Utils;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -17,10 +18,13 @@ namespace NSC.Creature
         private void Start()
         {
             _direction = (Vector3.zero - transform.position).normalized;
+            _direction.SetZ(0);
         }
 
-        private void Update()
+        protected override void Update()
         {
+            base.Update();
+
             transform.position += _direction * _moveSpeed * Time.deltaTime;
         }
 
@@ -28,8 +32,8 @@ namespace NSC.Creature
         {
             if (collision.gameObject.CompareTag("Player"))
             {
-                // TODO: damage player
-                Debug.Log("Damage player");
+                // damage player
+                GameManager.Instance.TakeDamage((float)Number.Numerator / Number.Denominator);
 
                 Die();
             }

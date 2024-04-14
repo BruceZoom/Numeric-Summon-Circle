@@ -40,7 +40,7 @@ namespace NSC.Creature
 
         private void SpawnEnemy()
         {
-            var dist = Random.Range(0, 3);
+            var dist = Random.Range(0f, 3f);
             Vector2 viewPos = Vector2.zero;
             if (dist <= 1)
             {

@@ -54,7 +54,7 @@ namespace NSC.Number
         public void StartPickupAnimation(Action finishCallback)
         {
             _rb.bodyType = RigidbodyType2D.Dynamic;
-            Vector2 force = new Vector2(UnityEngine.Random.Range(-1, 1), 1) * _pickupDropForce;
+            Vector2 force = new Vector2(UnityEngine.Random.Range(-2f, 2), 1) * _pickupDropForce;
             _rb.AddForce(force, ForceMode2D.Impulse);
             StartCoroutine(PickupAnimation(finishCallback));
         }

@@ -4,6 +4,7 @@ using DG.Tweening;
 using NSC.Inventory;
 using NSC.Number;
 using NSC.Shop;
+using NSC.Utils;
 using TMPro;
 using UnityEngine;
 
@@ -33,6 +34,15 @@ namespace NSC.Creature
             Number = number;
             _numberText.text = number.ToString();
             transform.localScale *= (0.8f + Mathf.Abs(number.IntegerPart) / 10);
+        }
+
+        protected virtual void Update()
+        {
+            // z gets locked by rigidbody
+            //var pos = transform.position;
+            //pos.SetZ(pos.y);
+            //transform.position = pos;
+            //Debug.Log(pos);
         }
 
         public void MeleeAttack(NumberCreature other)
