@@ -49,16 +49,16 @@ namespace NSC.Inventory
             }
         }
 
-        public void AddNumber(NumberElement number)
+        public void AddNumber(NumberElement number, int count = 1)
         {
             if (!_inventory.ContainsKey(number))
             {
                 var ui = GameObject.Instantiate(_elementUIPrefab, _inventoryUIParent);
-                _inventory.Add(number, new InventoryStack(1, number, ui));
+                _inventory.Add(number, new InventoryStack(count, number, ui));
             }
             else if (_inventory[number].Count >= 0)
             {
-                _inventory[number].Count += 1;
+                _inventory[number].Count += count;
             }
         }
     }

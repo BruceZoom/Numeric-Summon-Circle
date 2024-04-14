@@ -10,7 +10,7 @@ namespace NSC.Data
         [field: SerializeField] public float SubtractTimeBase { get; private set; }
         [field: SerializeField] public float DivideTimeBase { get; private set; }
         [field: SerializeField, Space(5)] public float AddTimeMultiplierDec { get; private set; }
-        [field: SerializeField] public float MultilyTimeMultiplierDec { get; private set; }
+        [field: SerializeField] public float MultiplyTimeMultiplierDec { get; private set; }
         [field: SerializeField] public float SubtractTimeMultiplierDec { get; private set; }
         [field: SerializeField] public float DivideTimeMultiplierDec { get; private set; }
 

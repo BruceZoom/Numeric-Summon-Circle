@@ -137,7 +137,6 @@ namespace NSC.Shop
                     good = GetGoodsWithWeight(r);
                 }
                 goods.Add(good);
-                print(goods.Count);
             }
             return goods;
         }

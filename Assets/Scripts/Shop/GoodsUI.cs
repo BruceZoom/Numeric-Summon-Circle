@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using NSC.Data;
+using NSC.Inventory;
 using NSC.Number;
 using TMPro;
 using UnityEngine;
@@ -72,8 +73,14 @@ namespace NSC.Shop
         /// </summary>
         public void OnPurchase()
         {
-            // TODO:
-            Debug.Log("On purchse");
+            if (_definition.Type == ShopOption.NumberElement)
+            {
+                InventoryManager.Instance.AddNumber(_number, _count);
+            }
+            else
+            {
+                _definition.OnPurchase();
+            }
 
             // increase cost
             ShopManager.Instance.Costs[_definition] += _definition.CostInc;

@@ -19,6 +19,9 @@ namespace NSC
         [SerializeField] private ShopManager _shopManager;
 
         [SerializeField] private List<Pot> _pots;
+        private int _nextPotIdx = 0;
+
+        public bool HasPot => _nextPotIdx > 0;
 
         public int SummonCapacity
         {
@@ -47,7 +50,7 @@ namespace NSC
         public float MaxHP
         {
             get => _maxHP;
-            private set
+            set
             {
                 _maxHP = value;
                 UIManager.Instance.HPBar.SetHP(_curHP, _maxHP);
@@ -56,7 +59,7 @@ namespace NSC
         public float CurHP
         {
             get => _curHP;
-            private set
+            set
             {
                 _curHP = value;
                 if (_curHP > _maxHP)
@@ -71,6 +74,8 @@ namespace NSC
                 UIManager.Instance.HPBar.SetHP(_curHP, _maxHP);
             }
         }
+
+        public bool CanAddPot => _nextPotIdx < _pots.Count;
 
         private void GameOver()
         {
@@ -92,6 +97,11 @@ namespace NSC
             MaxHP = DataManager.Instance.Data.HPBase;
             CurHP = MaxHP;
 
+            foreach (var pot in _pots)
+            {
+                pot.gameObject.SetActive(false);
+            }
+
             Time.timeScale = 1;
         }
 
@@ -103,6 +113,12 @@ namespace NSC
         public void Retry()
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
+        internal void AddPot()
+        {
+            _pots[_nextPotIdx].gameObject.SetActive(true);
+            _nextPotIdx++;
         }
     }
 }
