@@ -46,7 +46,7 @@ namespace NSC.Creature
                 other.Die(true);
                 // extra bonus
                 var reward = GameObject.Instantiate(_numberRewardPrefab, transform.position, Quaternion.identity);
-                reward.SetNumber(new NumberElement(0));
+                reward.SetNumber(new NumberElement(0), true);
                 reward.StartPickupAnimation(delegate
                 {
                     ShopManager.Instance.Money += GoldAmount;

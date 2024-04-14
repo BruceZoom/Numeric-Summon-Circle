@@ -185,7 +185,7 @@ namespace NSC.Player
             {
                 //Debug.Log("Waiting to consume product.");
                 // this is a terminal node and with available product, summon a unit
-                if (!HasTarget && IsProductAvailable)
+                if (!HasTarget && IsProductAvailable && _circle.CanSummon)
                 {
                     // clear output
                     IsProductAvailable = false;

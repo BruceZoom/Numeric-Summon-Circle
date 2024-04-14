@@ -15,6 +15,7 @@ namespace NSC.Number
 
         [SerializeField] private NumberElementObject _numberElementPrefab;
 
+
         [field: SerializeField] public NumberElement Number { get; private set; }
 
         private NumberElementObject _numberElement;
@@ -42,6 +43,8 @@ namespace NSC.Number
             Number = number;
             _numberText.text = number.ToString();
             _numberElement.SetNumber(number);
+            _numberElement.SpriteRend.sortingLayerID = SortingLayer.NameToID("Element");
+            _numberElement.NumberText.sortingLayerID = SortingLayer.NameToID("Element");
         }
 
         public void OnBeginDrag(PointerEventData eventData)

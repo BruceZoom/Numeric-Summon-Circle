@@ -11,7 +11,6 @@ namespace NSC.Number
 {
     public class NumberElementObject : MonoBehaviour
     {
-        private TextMeshPro _numberText;
         private Rigidbody2D _rb;
 
         [SerializeField] private Sprite _moneySprite;
@@ -22,22 +21,23 @@ namespace NSC.Number
         [SerializeField] private float _pickupDropTime = 1f;
         [SerializeField] private float _pickupTime = 0.5f;
 
-        private SpriteRenderer _spriteRenderer;
+        public SpriteRenderer SpriteRend { get; private set; }
+        [field: SerializeField] public TextMeshPro NumberText { get; private set; }
 
         private void Awake()
         {
-            _numberText = GetComponentInChildren<TextMeshPro>();
+            NumberText = GetComponentInChildren<TextMeshPro>();
             _rb = GetComponent<Rigidbody2D>();
             _rb.bodyType = RigidbodyType2D.Kinematic;
 
-            _spriteRenderer = GetComponent<SpriteRenderer>();
+            SpriteRend = GetComponent<SpriteRenderer>();
         }
 
         public void SetNumber(NumberElement number, bool isGold = false)
         {
-            _numberText.text = number.ToString();
+            NumberText.text = number.ToString();
 
-            _spriteRenderer.sprite = number.Numerator != 0 ? _numberSprite : (isGold ? _goldSprite : _moneySprite);
+            SpriteRend.sprite = number.Numerator != 0 ? _numberSprite : (isGold ? _goldSprite : _moneySprite);
         }
 
         public Tweener StartMoveAnimation(Vector3 from, Vector3 to, float duration)

@@ -13,7 +13,10 @@ namespace NSC.Player
         [SerializeField] private List<SummonCircleNode> _nodes;
         [SerializeField] private SummonedCreature _summonedCreaturePrefab;
 
+
         public int TotalNodes => _nodes.Count;
+
+        public bool CanSummon => GameManager.Instance.CurrentSummons < GameManager.Instance.SummonCapacity;
 
         private void Awake()
         {
@@ -27,9 +30,10 @@ namespace NSC.Player
 
         public void Summon(NumberElement number)
         {
-            Debug.Log(number);
             var summon = GameObject.Instantiate(_summonedCreaturePrefab, transform.position, Quaternion.identity);
             summon.SetNumber(number);
+
+            GameManager.Instance.CurrentSummons += 1;
         }
     }
 }

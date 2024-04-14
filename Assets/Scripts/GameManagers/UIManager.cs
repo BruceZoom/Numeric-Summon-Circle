@@ -11,12 +11,8 @@ namespace NSC.UI
     {
         [field: SerializeField] public Transform InventoryUI { get; private set; }
         [field: SerializeField] public TextMeshProUGUI MoneyText { get; private set; }
+        [field: SerializeField] public TextMeshProUGUI CapacityText { get; private set; }
 
-
-        private void Awake()
-        {
-            Initialize();
-        }
 
         public override void Initialize()
         {

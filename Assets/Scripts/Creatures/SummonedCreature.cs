@@ -77,6 +77,14 @@ namespace NSC.Creature
             }
         }
 
+        public override void Die(bool definiteDrop = false)
+        {
+            base.Die(definiteDrop);
+
+            GameManager.Instance.CurrentSummons -= 1;
+        }
+
+
 #if UNITY_EDITOR
         private void OnDrawGizmosSelected()
         {

@@ -38,11 +38,6 @@ namespace NSC.Shop
 
         private List<GoodsUI> _goods;
 
-        private void Awake()
-        {
-            Initialize();
-        }
-
         public override void Initialize()
         {
             base.Initialize();
@@ -54,6 +49,8 @@ namespace NSC.Shop
             _shopButton.onClick.AddListener(ShopButtonClick);
             _shopButtonText = _shopButton.GetComponentInChildren<TextMeshProUGUI>();
             ToggleShop(false);
+
+            Money = 0;
         }
 
         private void OnEnable()
