@@ -21,7 +21,7 @@ MonoBehaviour:
       <Numerator>k__BackingField: -5
       <Denominator>k__BackingField: 1
     MaxNumber:
-      <Numerator>k__BackingField: 50
+      <Numerator>k__BackingField: 100
       <Denominator>k__BackingField: 1
   - Number:
       <Numerator>k__BackingField: 0
@@ -51,7 +51,7 @@ MonoBehaviour:
       <Numerator>k__BackingField: -20
       <Denominator>k__BackingField: 2
     MaxNumber:
-      <Numerator>k__BackingField: 100
+      <Numerator>k__BackingField: 500
       <Denominator>k__BackingField: 20
   MinSpawnDuration: 4
   MaxSpawnDuration: 6

@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 671ab286ae573bf4aa926a1f54da4600, type: 3}
   m_Name: Data Definition
   m_EditorClassIdentifier: 
-  <AddTimeBase>k__BackingField: 3
+  <AddTimeBase>k__BackingField: 2
   <MultiplyTimeBase>k__BackingField: 10
-  <SubtractTimeBase>k__BackingField: 4
-  <DivideTimeBase>k__BackingField: 8
-  <AddTimeMultiplierDec>k__BackingField: 0.2
-  <MultilyTimeMultiplierDec>k__BackingField: 0.2
-  <SubtractTimeMultiplierDec>k__BackingField: 0.2
-  <DivideTimeMultiplierDec>k__BackingField: 0.2
+  <SubtractTimeBase>k__BackingField: 2
+  <DivideTimeBase>k__BackingField: 10
+  <AddTimeMultiplierDec>k__BackingField: 0.25
+  <MultiplyTimeMultiplierDec>k__BackingField: 0.3
+  <SubtractTimeMultiplierDec>k__BackingField: 0.25
+  <DivideTimeMultiplierDec>k__BackingField: 0.3
   <SummonTime>k__BackingField: 1
-  <PotTimeBase>k__BackingField: 16
+  <PotTimeBase>k__BackingField: 8
   <PotTimeMultiplierDec>k__BackingField: 0.125
   <PotTimeMin>k__BackingField: 1
   <CapacityBase>k__BackingField: 5
@@ -32,8 +32,8 @@ MonoBehaviour:
   <HPMax>k__BackingField: 100
   <HPRecoverRatio>k__BackingField: 0.2
   <NumberDropRateBase>k__BackingField: 0.05
-  <NumberDropRateInc>k__BackingField: 0.05
-  <NumberDropRateMax>k__BackingField: 0.2
+  <NumberDropRateInc>k__BackingField: 0.01
+  <NumberDropRateMax>k__BackingField: 0.1
   <GoldValueBase>k__BackingField: 5
   <GoldValueInc>k__BackingField: 5
   <GoldValueMax>k__BackingField: 50

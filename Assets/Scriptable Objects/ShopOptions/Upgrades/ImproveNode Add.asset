@@ -14,9 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <GoodsName>k__BackingField: Improve Node - Addition
   <GoodsDescription>k__BackingField: Improve the efficiency of the addition node
-    by 20%.
-  <BaseCost>k__BackingField: 15
-  <CostInc>k__BackingField: 15
+    by 25%.
+  <BaseCost>k__BackingField: 20
+  <CostInc>k__BackingField: 20
   _type: 0
   <Op>k__BackingField: 1
   <RandomWeight>k__BackingField: 1
+  <MinNumber>k__BackingField:
+    <Numerator>k__BackingField: 0
+    <Denominator>k__BackingField: 0
+  <MaxNumber>k__BackingField:
+    <Numerator>k__BackingField: 0
+    <Denominator>k__BackingField: 0
+  <MinCount>k__BackingField: 0
+  <MaxCount>k__BackingField: 0

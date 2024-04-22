@@ -17,7 +17,7 @@ namespace NSC.Creature
 
         //[SerializeField] private float _spawnInterval;
         private float _spawnTimer;
-        private float _restTimer;
+        private float _restTimer = 10f;
 
         [SerializeField] private List<WaveData> _waves;
 
@@ -72,6 +72,15 @@ namespace NSC.Creature
                 else
                 {
                     _restTimer -= Time.deltaTime;
+
+                    if (_restTimer > 0)
+                    {
+                        _waveText.text = $"Next Wave: ({(int)_restTimer}s) {WaveToString(_waveNumbers)}";
+                    }
+                    else
+                    {
+                        _waveText.text = $"Next Wave: {WaveToString(_nextWaveNumbers)}";
+                    }
                 }
             }
         }
@@ -96,15 +105,19 @@ namespace NSC.Creature
 
             // prepare next wave
             GenerateNextWave();
+        }
 
-            _waveText.text = $"Next Wave: ";
+        private string WaveToString(List<NumberElement> numbers)
+        {
+            string res = "";
             bool isFirst = true;
-            foreach (var number in _nextWaveNumbers.Distinct())
+            foreach (var number in numbers.Distinct())
             {
-                if (!isFirst) _waveText.text += ", ";
-                _waveText.text += number.ToString();
+                if (!isFirst) res += ", ";
+                res += number.ToString();
                 isFirst = false;
             }
+            return res;
         }
 
         private void GenerateNextWave()

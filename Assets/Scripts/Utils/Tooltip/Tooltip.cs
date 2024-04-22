@@ -22,12 +22,8 @@ namespace NSC.UI
             gameObject.SetActive(false);
         }
 
-        public void DisplayTooltip(string tip, Vector3 position)
+        public void SetToolTipPos(Vector3 position)
         {
-            gameObject.SetActive(true);
-
-            _text.text = tip;
-
             transform.position = position.SetZ(0);
 
             float width = Mathf.Min(_text.preferredWidth, _maxWidth);
@@ -74,6 +70,15 @@ namespace NSC.UI
             //}
 
             _panelRect.anchoredPosition = Vector2.zero;
+        }
+
+        public void DisplayTooltip(string tip, Vector3 position)
+        {
+            gameObject.SetActive(true);
+
+            _text.text = tip;
+
+            SetToolTipPos(position);
         }
 
         public void HideTooltip()

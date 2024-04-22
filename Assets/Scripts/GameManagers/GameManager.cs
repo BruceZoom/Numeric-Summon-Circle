@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using NSC.Audio;
 using NSC.Data;
 using NSC.Player;
 using NSC.Shop;
@@ -80,6 +81,7 @@ namespace NSC
         private void GameOver()
         {
             UIManager.Instance.GameOverPanel.SetActive(true);
+            AudioManager.Instance.PlayRandomSFX(AudioManager.Instance.GameOverSFX);
             Time.timeScale = 0;
         }
 

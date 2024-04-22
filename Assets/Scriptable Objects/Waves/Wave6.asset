@@ -16,7 +16,7 @@ MonoBehaviour:
   - Number:
       <Numerator>k__BackingField: 9
       <Denominator>k__BackingField: 2
-    Count: 20
+    Count: 15
     MinNumber:
       <Numerator>k__BackingField: 0
       <Denominator>k__BackingField: 0

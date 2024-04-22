@@ -16,7 +16,7 @@ MonoBehaviour:
   - Number:
       <Numerator>k__BackingField: 125
       <Denominator>k__BackingField: 3
-    Count: 10
+    Count: 8
     MinNumber:
       <Numerator>k__BackingField: 0
       <Denominator>k__BackingField: 0
@@ -26,7 +26,7 @@ MonoBehaviour:
   - Number:
       <Numerator>k__BackingField: 75
       <Denominator>k__BackingField: 2
-    Count: 10
+    Count: 8
     MinNumber:
       <Numerator>k__BackingField: 0
       <Denominator>k__BackingField: 0

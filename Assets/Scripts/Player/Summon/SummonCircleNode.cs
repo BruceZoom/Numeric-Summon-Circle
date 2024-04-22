@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
+using NSC.Audio;
 using NSC.Creature;
 using NSC.Data;
 using NSC.Inventory;
@@ -18,6 +19,11 @@ namespace NSC.Player
         [field: SerializeField] public Operator Op { get; private set; }
         public bool HasNoOperator => Op == Operator.None;
 
+        [SerializeField] private Sprite _sumSprite;
+        [SerializeField] private Sprite _subtractSprite;
+        [SerializeField] private Sprite _multiplySprite;
+        [SerializeField] private Sprite _divideSprite;
+
         private SummonCircle _circle;
         private List<SummonCircleNode> _targetNodes;
         private List<SummonCircleNode> _sourceQueue;
@@ -25,7 +31,7 @@ namespace NSC.Player
         private NumberSlot _ingredientSlot;
         public NumberElement Ingredient => _ingredientSlot.Number;
 
-        private SpriteRenderer _sprite;
+        [SerializeField] private SpriteRenderer _opSprite;
 
         public float ProductionTime => Op switch {
             Operator.Sum => DataManager.Instance.AddTime,
@@ -71,7 +77,15 @@ namespace NSC.Player
         {
             _sourceQueue = new List<SummonCircleNode>();
 
-            _sprite = GetComponent<SpriteRenderer>();
+            _opSprite.sprite = Op switch
+            {
+                Operator.Sum => _sumSprite,
+                Operator.Subtract => _subtractSprite,
+                Operator.Multiply => _multiplySprite,
+                Operator.Divide => _divideSprite,
+                _ => null,
+            };
+            _opSprite.transform.rotation = Quaternion.identity;
 
             _ingredientSlot = GetComponentInChildren<NumberSlot>();
             _ingredientSlot.SetUpSlot(this);
@@ -190,7 +204,7 @@ namespace NSC.Player
             {
                 //Debug.Log("Waiting to consume product.");
                 // this is a terminal node and with available product, summon a unit
-                if (!HasTarget && IsProductAvailable && _circle.CanSummon)
+                if (!HasTarget && IsProductAvailable && (_circle.CanSummon || _product.Numerator == 0))
                 {
                     // clear output
                     IsProductAvailable = false;
@@ -287,6 +301,11 @@ namespace NSC.Player
             }
             // production finish
             FinishProduction(NumberElement.Calculate(Op, operand1, operand2));
+
+            if (!HasNoOperator)
+            {
+                AudioManager.Instance.PlayRandomSFX(AudioManager.Instance.ProduceSFX);
+            }
         }
 
         private void FinishProduction(NumberElement product)

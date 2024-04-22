@@ -26,6 +26,8 @@ namespace NSC.Number
         public SpriteRenderer SpriteRend { get; private set; }
         [field: SerializeField] public TextMeshPro NumberText { get; private set; }
 
+        private NumberElement _number;
+
         private void Awake()
         {
             NumberText = GetComponentInChildren<TextMeshPro>();
@@ -43,8 +45,10 @@ namespace NSC.Number
         public void SetNumber(NumberElement number, bool isGold = false)
         {
             NumberText.text = number.ToString();
+            _number = number;
 
             SpriteRend.sprite = number.Numerator != 0 ? _numberSprite : (isGold ? _goldSprite : _moneySprite);
+            if (isGold) SpriteRend.sortingOrder += 1;
         }
 
         public Tweener StartMoveAnimation(Vector3 from, Vector3 to, float duration)
@@ -61,7 +65,7 @@ namespace NSC.Number
         public void StartPickupAnimation(Action finishCallback)
         {
             _rb.bodyType = RigidbodyType2D.Dynamic;
-            Vector2 force = new Vector2(UnityEngine.Random.Range(-2f, 2), 1) * _pickupDropForce;
+            Vector2 force = new Vector2(UnityEngine.Random.Range(-2f, 2), 1.5f) * _pickupDropForce;
             _rb.AddForce(force, ForceMode2D.Impulse);
             StartCoroutine(PickupAnimation(finishCallback));
         }
@@ -70,7 +74,8 @@ namespace NSC.Number
         {
             yield return new WaitForSeconds(_pickupDropTime);
             _rb.bodyType = RigidbodyType2D.Kinematic;
-            var pos = Camera.main.ScreenToWorldPoint(UIManager.Instance.InventoryUI.position).SetZ(0);
+            var pos = (_number.Numerator == 0 ? UIManager.Instance.MoneyUI.position : UIManager.Instance.InventoryUI.position).SetZ(0);
+            //var pos = Camera.main.ScreenToWorldPoint(_number.Numerator == 0 ? UIManager.Instance.MoneyUI.position : UIManager.Instance.InventoryUI.position).SetZ(0);
             transform.DOMove(pos, _pickupTime)
                 .OnComplete(delegate
                 {

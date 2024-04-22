@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using NSC.Audio;
 using NSC.Data;
 using NSC.Inventory;
 using NSC.Number;
@@ -81,6 +82,9 @@ namespace NSC.Shop
             {
                 _definition.OnPurchase();
             }
+
+            // sfx
+            AudioManager.Instance.PlayRandomSFX(AudioManager.Instance.PurchaseSFX);
 
             // increase cost
             ShopManager.Instance.Costs[_definition] += _definition.CostInc;

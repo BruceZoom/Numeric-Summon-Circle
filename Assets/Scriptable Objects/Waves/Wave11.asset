@@ -21,7 +21,7 @@ MonoBehaviour:
       <Numerator>k__BackingField: -5
       <Denominator>k__BackingField: 1
     MaxNumber:
-      <Numerator>k__BackingField: 50
+      <Numerator>k__BackingField: 75
       <Denominator>k__BackingField: 1
   - Number:
       <Numerator>k__BackingField: 0

@@ -14,9 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <GoodsName>k__BackingField: Drop Rate Up
   <GoodsDescription>k__BackingField: Increase the drop rate of number element when
-    a creature dies.
-  <BaseCost>k__BackingField: 20
-  <CostInc>k__BackingField: 20
+    an ememy dies.
+  <BaseCost>k__BackingField: 15
+  <CostInc>k__BackingField: 15
   _type: 6
   <Op>k__BackingField: 0
   <RandomWeight>k__BackingField: 1
+  <MinNumber>k__BackingField:
+    <Numerator>k__BackingField: 0
+    <Denominator>k__BackingField: 0
+  <MaxNumber>k__BackingField:
+    <Numerator>k__BackingField: 0
+    <Denominator>k__BackingField: 0
+  <MinCount>k__BackingField: 0
+  <MaxCount>k__BackingField: 0

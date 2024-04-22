@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 450c01e9376d5c0479a4612a1ff873e4, type: 3}
+  m_Name: HurtSFX
+  m_EditorClassIdentifier: 
+  _audioClips:
+  - {fileID: 8300000, guid: 3367bd8e3a017ae41932e960b933dde4, type: 3}
+  - {fileID: 8300000, guid: f02275b316d21a046a785721b7491768, type: 3}
+  - {fileID: 8300000, guid: 4c7509ba92c7ccb4ab739666ae253fa3, type: 3}

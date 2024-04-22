@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using NSC.Audio;
 using NSC.Data;
 using NSC.Inventory;
 using NSC.Number;
@@ -37,11 +38,11 @@ namespace NSC.Creature
             _initScale = transform.localScale;
         }
 
-        public void SetNumber(NumberElement number)
+        public virtual void SetNumber(NumberElement number)
         {
             Number = number;
             _numberText.text = number.ToString();
-            transform.localScale = _initScale * Mathf.Min(0.8f + Mathf.Abs(number.IntegerPart) / 20, 5f);
+            transform.localScale = _initScale * Mathf.Min(0.8f + Mathf.Abs(number.Value) / 20, 5f);
         }
 
         protected virtual void Update()
@@ -88,9 +89,25 @@ namespace NSC.Creature
             }
         }
 
-        public virtual void Die(bool definiteDrop = false)
+        public void ForceKill()
+        {
+            Die(noDrop : true);
+        }
+
+        public virtual void Die(bool definiteDrop = false, bool noDrop = false)
         {
             Destroy(gameObject);
+
+            // vfx
+            GameObject.Instantiate(_damageVFX, transform.position, Quaternion.identity);
+            // sfx
+            AudioManager.Instance.PlayRandomSFX(AudioManager.Instance.DamageSFX);
+
+            if (noDrop)
+            {
+                return;
+            }
+
             // basic money reward
             var reward = GameObject.Instantiate(_numberRewardPrefab, transform.position, Quaternion.identity);
             reward.SetNumber(new NumberElement(0));
@@ -109,9 +126,6 @@ namespace NSC.Creature
                     InventoryManager.Instance.AddNumber(number);
                 });
             }
-
-            // vfx
-            GameObject.Instantiate(_damageVFX, transform.position, Quaternion.identity);
         }
 
         public virtual void TakeDamage(NumberElement number)
@@ -122,6 +136,7 @@ namespace NSC.Creature
                 _textAnim = _numberText.transform.DOPunchScale(Vector3.one * _textAnimScale, _textAnimDuration, 1, 0);
             }
             GameObject.Instantiate(_damageVFX, transform.position, Quaternion.identity);
+            AudioManager.Instance.PlayRandomSFX(AudioManager.Instance.DamageSFX);
         }
     }
 }

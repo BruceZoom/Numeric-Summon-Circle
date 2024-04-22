@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 450c01e9376d5c0479a4612a1ff873e4, type: 3}
+  m_Name: PurchaseSFX
+  m_EditorClassIdentifier: 
+  _audioClips:
+  - {fileID: 8300000, guid: dd2ff97fb9935ec429f422b52f2bc679, type: 3}
+  - {fileID: 8300000, guid: 22c5650125e1e3c42a57b5ae186fa169, type: 3}

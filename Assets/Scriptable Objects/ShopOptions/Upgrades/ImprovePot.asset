@@ -13,9 +13,17 @@ MonoBehaviour:
   m_Name: ImprovePot
   m_EditorClassIdentifier: 
   <GoodsName>k__BackingField: Improve Pot
-  <GoodsDescription>k__BackingField: Improve the efficiency of all pots.
+  <GoodsDescription>k__BackingField: Improve the efficiency of all pots by 12.5%.
   <BaseCost>k__BackingField: 20
   <CostInc>k__BackingField: 10
   _type: 1
   <Op>k__BackingField: 0
   <RandomWeight>k__BackingField: 1
+  <MinNumber>k__BackingField:
+    <Numerator>k__BackingField: 0
+    <Denominator>k__BackingField: 0
+  <MaxNumber>k__BackingField:
+    <Numerator>k__BackingField: 0
+    <Denominator>k__BackingField: 0
+  <MinCount>k__BackingField: 0
+  <MaxCount>k__BackingField: 0

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Enemies:
   - Number:
-      <Numerator>k__BackingField: 36
+      <Numerator>k__BackingField: 24
       <Denominator>k__BackingField: 1
     Count: 10
     MinNumber:

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using NSC.Number;
 using UnityEngine;
 
 namespace NSC.Creature
@@ -13,6 +14,7 @@ namespace NSC.Creature
         private Transform _trackTarget;
 
         [SerializeField] private float _moveSpeed;
+        private float _initSpeed;
 
         private float _nextTargetUpdateTime;
 
@@ -23,6 +25,7 @@ namespace NSC.Creature
             base.Awake();
 
             _rb = GetComponent<Rigidbody2D>();
+            _initSpeed = _moveSpeed;
         }
 
         protected override void Update()
@@ -67,6 +70,13 @@ namespace NSC.Creature
             }
         }
 
+        public override void SetNumber(NumberElement number)
+        {
+            base.SetNumber(number);
+
+            _moveSpeed = _initSpeed / (0.9f + Mathf.Min(Mathf.Abs(number.Value) / 100f, 1.1f));
+        }
+
         private void UntrackEnemy()
         {
             _trackTarget = null;
@@ -80,9 +90,9 @@ namespace NSC.Creature
             }
         }
 
-        public override void Die(bool definiteDrop = false)
+        public override void Die(bool definiteDrop = false, bool noDrop = false)
         {
-            base.Die(definiteDrop);
+            base.Die(definiteDrop, noDrop);
 
             GameManager.Instance.CurrentSummons -= 1;
         }

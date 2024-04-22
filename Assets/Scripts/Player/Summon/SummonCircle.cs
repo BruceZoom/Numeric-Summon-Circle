@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using NSC.Audio;
 using NSC.Creature;
 using NSC.Number;
 using NSC.Shop;
@@ -56,6 +57,8 @@ namespace NSC.Player
                 summon.SetNumber(number);
 
                 GameManager.Instance.CurrentSummons += 1;
+
+                AudioManager.Instance.PlayRandomSFX(AudioManager.Instance.SummonSFX);
             }
         }
     }
